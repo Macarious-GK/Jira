@@ -1,6 +1,6 @@
 # Jira
 
-## What is Jira?
+## Get started quickly with Jira
 - Atlassian product
 - Jira is project management software more like a TODO list for team Members
 
@@ -43,3 +43,34 @@
         - The **assignee** is the person assigned to work on the work item. The **reporter** is the person who created the work item. 
         - **Only one user** can be in each field; you can’t have multiple assignees or reporters for a single work item.
         
+## Track your work effectively in Jira
+
+- **Add attachments** to work items like png, link, etc..
+- View work item **history**
+- **Link** work items
+- relationship between work items
+    - Relates to
+    - Depends on / is depended on by
+    - Blocks / is blocked by
+    - Clones / is cloned by
+- Move work items
+    - Change Work Item Type
+    - Move SubTask to other parents
+    - Move work to other project
+- `List View`: edit items in place  
+    - Also used for bulk actions
+
+### Search to find information in Jira
+- Types
+    - Search Bar
+    - Basic 
+    - Advanced
+- You can only use basic search to find work items, not projects or boards. If you want to find a project or board, the search bar can help
+
+- Basic
+    - Go to basic search
+    - Enter a keyword
+    - Set criteria
+    - Sort your results
+- Advanced JQL
+
