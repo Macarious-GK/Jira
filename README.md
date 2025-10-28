@@ -24,7 +24,7 @@
 
 ---
 
-<div style="text-align: center;"><img src="images/worktypes.png" width="900 " height="500" style="border-radius: 15px;"></div>
+<div style="text-align: center;"><img src="images/worktypes.png" width="1000" height="500" style="border-radius: 15px;"></div>
 
 - Work Types
     - `Epic` **(Parent *work items*)** : An epic represents a large body of work that can break down into smaller chunks.
@@ -113,7 +113,27 @@
     - Map requirements to Jira configurations.
     - Implement in Jira.
 
-### Genal  
-- project type:
-    - Team-managed projects (Flexible & Less Restrictive )
-    - Company-managed projects (Use Schema )
+### Project  
+- `Project type`: (who can configure your project and if those configurations are shared)
+    - ***Team-managed*** projects (Flexible & Less Restrictive )
+    - ***Company-managed*** projects (Use Schema )
+
+- `Project Template`: ( provides pre-configurations for your project, like work types and workflows.)
+- four commonly Software project templates: 
+    - kanban (work-in-progress limits)
+    - scrum (work in sprints)
+    - bug tracking ( reported bugs, suggested improvements)
+    - top-level planning. (helps team or organization leads visualize and track large initiatives)
+
+
+- `Schemes`:
+    - collections of configurations can be reusable 
+    - Six schemes are always included in company-managed projects:
+        - Work type scheme
+        - Permission scheme
+        - Notification scheme
+        - Field configuration scheme
+        - Workflow scheme
+        - Work type screen scheme
+        
+<div style="text-align: center;"><img src="images/schema.png" width="600 " height="400" style="border-radius: 15px;"></div>
