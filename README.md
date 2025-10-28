@@ -137,3 +137,33 @@
         - Work type screen scheme
         
 <div style="text-align: center;"><img src="images/schema.png" width="600 " height="400" style="border-radius: 15px;"></div>
+
+- `Project roles and permissions`:
+    - Permissions add a layer of security
+    - Control the content that users can access and the actions they can perform.
+
+- `Global permissions` control system-wide functionality across all of Jira and Jira Service Management.
+    - Jira system administrators
+    - Jira administrators
+    - Jira users
+    - Browse users
+    - Make bulk changes
+
+- `Project permissions` control functionality in a project for users, groups, or project roles.
+    - Company-managed project permissions (permission schemes)
+        - Standalone permissions (control a single piece of functionality)
+        - Interrelated permissions (will not have any effect unless combined with other permissions)
+        - Permissions that need to meet global prerequisites in order to have an effect
+
+- Configure internal project access
+    - Permissions are different from internal project access. Internal project access determines how users outside of your project can interact with your project. 
+    - Types:
+        - Private (no external access or view )
+        - Limited (no External access but view)
+        - Open (External access & View)
+
+NOTE: 
+In order to make your permissions and roles really effective you have to set the Internal project access to one of two private or Omited
+
+TODO:
+    create role and assign permission in Company Managed Project
