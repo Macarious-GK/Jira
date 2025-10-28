@@ -80,3 +80,40 @@
     - Calendar view
 
 ## Personalize how you work in Jira
+
+- A `dashboard `is a customized screen to give you a high-level snapshot of everything happening in Jira.
+- Dashboards are made up of small, configurable blocks called `gadgets`.
+
+- We can use shortcuts & Commands to navigate and edit work items 
+
+
+## Jira Admin
+
+### Roles:
+- organization admin (Manage sites)
+    - only individuals who can manage users, groups, and product access
+    - An org admin performs their tasks within the Atlassian Admin Hub 
+- Product admin == Jira admin   
+    - Configure product settings
+    - Create Project & Project Roles
+- Project admin 
+    - project admins can manage their project details and project access.
+- site administrator 
+    - Manage billing & Manage products and app.
+
+### Best Practice
+
+- Best Practice:
+    - Persist Project Key
+    - Reuse other configurations: Use Schema 
+    - Test in a sandbox
+    - Create role-specific dashboards 
+- Steps to implement Jira:
+    - Discover and understand business requirements.
+    - Map requirements to Jira configurations.
+    - Implement in Jira.
+
+### Genal  
+- project type:
+    - Team-managed projects (Flexible & Less Restrictive )
+    - Company-managed projects (Use Schema )
