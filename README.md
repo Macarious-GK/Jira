@@ -74,3 +74,9 @@
     - Sort your results
 - Advanced JQL
 
+### Schedule work with the Timeline and Calendar views in Jira
+- provide two views
+    - Timeline view (Manage Dependency)
+    - Calendar view
+
+## Personalize how you work in Jira
