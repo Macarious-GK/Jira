@@ -259,9 +259,9 @@ In order to make your permissions and roles really effective you have to set the
 - We can Import work using ` External System Import `   
     - You can import data from a CSV, JSON, or Trello file
 
-## Permissions
-- Permissions are controlled at the organization, product, project, and work item levels.
+## Access & Permissions
 
+### Global Permissions
 - `Global permissions` control system-wide functionality across all of Jira and Jira Service Management.
     - Jira system administrators
     - Jira administrators
@@ -270,20 +270,53 @@ In order to make your permissions and roles really effective you have to set the
     - Make bulk changes
 - Only Jira admins can modify global permissions.
 
-- `Project permissions` control functionality in a project for users, groups, or project roles.
-    - Jira admins manage project permissions for ***company-managed projects*** through permission schemes.
-        - categorized :
-            - Standalone permissions (control a single piece of functionality)
-            - Interrelated permissions (will not have any effect unless combined with other permissions)
-            - Permissions that need to meet global prerequisites in order to have an effect
-    - Project admins manage project permissions for ***team-managed projects*** through custom roles. 
+### Team managed Project
+> - ***Find Here:*** Project Settings -> Access
+- We will have default three roles 
+    - Administrator (Read, Write & Delete)
+    - Member (Read & Write)
+    - Viewer (Read)
+- We can manage roles (Create, Delete, Modify)
+- We can add people to this project and assign roles to them 
 
-- Configure internal project access
-    - Permissions are different from internal project access. Internal project access determines how users outside of your project can interact with your project. 
-    - Types:
-        - Private (no external access or view )
-        - Limited (no External access but view)
-        - Open (External access & View)
+- First we need to define Internal Project access Mode:
+    - Private (no external access or view )
+    - Limited (no External access but view)
+    - Open (External access & View)
+
+- This mode give the user roles the actual effect.
+
+- Project admins manage project permissions for ***team-managed projects*** through custom roles. 
+
+#### - ***`NOTES on Team Managed Project Access & Permissions`***
+- `Team-Managed project` is based on ***roles and access levels***
+- Internal project access sets the visibility boundary of the project.
+- Inside that boundary, roles (Administrator / Member / Viewer) define what each person can do.
+
+### Company Manged Project
+- We need org admin to create users and groups
+- For reusability and scalability we use **groups** 
+- Step One: Create Groups (departments)
+- Step Two: Create Project Roles (Admin, Dev, User)
+- Step Three: Create Permission Scheme (By grant permsission to Group/User/`Role`)
+- Step Four: Change the Project Permission scheme to the created one
+- Step Five: add People (Users/Groups) and assign to them Project Roles
+
+
+- Jira admins manage project permissions for ***company-managed projects*** through permission schemes.
+    - categorized :
+        - Standalone permissions (control a single piece of functionality)
+        - Interrelated permissions (will not have any effect unless combined with other permissions)
+        - Permissions that need to meet global prerequisites in order to have an effect
+
+
+#### ***`NOTES on Company Managed Project Access & Permissions`***
+- Group/User assigned to a Project Role
+- Project Role is grated certen permission according to permission scheme
+- Project Use the custom permission scheme
+
+
+
 
 
 
