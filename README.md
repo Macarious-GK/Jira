@@ -173,11 +173,11 @@ In order to make your permissions and roles really effective you have to set the
 
 # APC
 - Access, permissions, and security: 25%-30%
-- General project configuration: 10%-15%
 - Issue types, fields, and screens: 15%-20%
 - Workflows and automation: 15%-20%
-- Notifications: 5%-10%
+- General project configuration: 10%-15%
 - Advanced user features: 10%-15%
+- Notifications: 5%-10%
 - System administration: 5%-10%
 
 ## Intro
@@ -259,73 +259,6 @@ In order to make your permissions and roles really effective you have to set the
 - We can Import work using ` External System Import `   
     - You can import data from a CSV, JSON, or Trello file
 
-## Access & Permissions
-
-### Global Permissions
-- `Global permissions` control system-wide functionality across all of Jira and Jira Service Management.
-    - Jira system administrators
-    - Jira administrators
-    - Jira users
-    - Browse users
-    - Make bulk changes
-- Only Jira admins can modify global permissions.
-
-### Team managed Project
-> - ***Find Here:*** Project Settings -> Access
-- We will have default three roles 
-    - Administrator (Read, Write & Delete)
-    - Member (Read & Write)
-    - Viewer (Read)
-- We can manage roles (Create, Delete, Modify)
-- We can add people to this project and assign roles to them 
-
-- First we need to define Internal Project access Mode:
-    - Private (no external access or view )
-    - Limited (no External access but view)
-    - Open (External access & View)
-
-- This mode give the user roles the actual effect.
-
-- Project admins manage project permissions for ***team-managed projects*** through custom roles. 
-
-#### - ***`NOTES on Team Managed Project Access & Permissions`***
-- `Team-Managed project` is based on ***roles and access levels***
-- Internal project access sets the visibility boundary of the project.
-- Inside that boundary, roles (Administrator / Member / Viewer) define what each person can do.
-
-### Company Manged Project
-- We need org admin to create users and groups
-- For reusability and scalability we use **groups** 
-- Step One: Create Groups (departments)
-- Step Two: Create Project Roles (Admin, Dev, User)
-- Step Three: Create Permission Scheme (By grant permsission to Group/User/`Role`)
-- Step Four: Change the Project Permission scheme to the created one
-- Step Five: add People (Users/Groups) and assign to them Project Roles
-
-
-- Jira admins manage project permissions for ***company-managed projects*** through permission schemes.
-    - categorized :
-        - Standalone permissions (control a single piece of functionality)
-        - Interrelated permissions (will not have any effect unless combined with other permissions)
-        - Permissions that need to meet global prerequisites in order to have an effect
-
-
-#### ***`NOTES on Company Managed Project Access & Permissions`***
-- Group/User assigned to a Project Role
-- Project Role is grated certen permission according to permission scheme
-- Project Use the custom permission scheme
-
-
-
-
-
-
-### Configure global permissions in Jira
-
-global permissions can be add only to groups
-### Notes on Permissions
-- Avoid using Public with most global permissions. Instead, use project permissions to control the access of anonymous users.
-- The Jira Permission Helper can help you understand a user's permissions. You can check a specific permission for a specific user, and even specify a work item key.
 
 # Secondary Topics
 ## Customize Jira Experience
@@ -346,6 +279,139 @@ global permissions can be add only to groups
     - actions that impact users and projects
     - doesn’t track work item updates or pages
 
+## Integrate Jira with a repository
 
-TODO:
-    create role and assign permission in Company Managed Project
+
+
+
+
+# ***`Access & Permissions`***
+
+- There are 3 Levels of permissions in Jira
+    - Product 
+    - Project/Space 
+    - Work Item (Issue)
+
+## 0. Organization Level
+- Manage Organizations at whole
+- Manage User/Groups
+- Manage Product access 
+
+- There are three options for the organization admin to assign to a user 
+    - User  (Normal User for App)
+    - User access Admin (User but for Org Admin Atlassian)
+    - Administrator (Admin for App)
+    - site admin (Manage site users & )
+
+
+## 1. Product Level 
+- Jira admins Manage Global permissions
+- Manage the instance permissions 
+
+### Global Permissions
+- `Global permissions` control system-wide functionality across all of Jira and Jira Service Management.
+    - Administer Jira
+    - Browse users and groups
+    - Share dashboards and filters
+    - Manage group filter subscriptions
+    - Make bulk changes
+    - Create team-managed projects
+
+- Only Jira admins can modify global permissions.
+
+#### Steps
+- Navigate to (Settings -> Global Permissions)
+- Edit permissions or Grant a permission to a Group
+
+## 2. Project/Space Level
+- Manage user access to project 
+- Project-level functionality
+- Project permissions are managed in two ways:
+    - `Project admins` manage project permissions for ***team-managed projects*** through *custom roles*.
+    - `Jira admins` manage project permissions for ***company-managed projects*** through *permission schemes*. 
+
+### Team managed Project
+- ***`NOTES on Team Managed Project Access & Permissions`***
+- `Team-Managed project` is based on ***roles and access levels***
+- Internal project access sets the visibility boundary of the project.
+- Inside that boundary, roles (Administrator / Member / Viewer) define what each person can do.
+
+#### Steps
+> - ***Find Here:*** Project Settings -> Access
+- We will have default three roles 
+    - Administrator (Read, Write & Delete)
+    - Member (Read & Write)
+    - Viewer (Read)
+- We can manage roles (Create, Delete, Modify)
+- We can add people to this project and assign roles to them 
+- First we need to define Internal Project access Mode:
+    - Private (no external access or view )
+    - Limited (no External access but view)
+    - Open (External access & View)
+- This mode give the user roles the actual effect.
+
+### Company Manged Project
+- ***`NOTES on Company Managed Project Access & Permissions`***
+- Group/User assigned to a Project Role
+- Project Role is grated certain permission according to permission scheme
+- Project Use the custom permission scheme
+- permission scheme contain:
+    - Permissions 
+    - Granted to (Group, Project Role, User, any Logged in)
+- Jira admins manage project permissions for ***company-managed projects*** through permission schemes.
+    - categorized :
+        - Standalone permissions (control a single piece of functionality)
+        - Interrelated permissions (will not have any effect unless combined with other permissions)
+        - Permissions that need to meet global prerequisites in order to have an effect
+
+#### Steps
+- We need org admin to create users and groups
+- For reusability and scalability we use **groups** 
+- Step One: Create Groups (departments)
+- Step Two: Create Project Roles (Admin, Dev, User)
+- Step Three: Create Permission Scheme (By grant permission to Group/User/`Role`)
+- Step Four: Change the Project Permission scheme to the created one
+- Step Five: add People (Users/Groups) and assign to them Project Roles
+
+
+
+
+
+## 3. Work item security permissions
+### Team Managed Projects
+- `Work restrictions` control which project roles can view newly created work items of that type
+
+### Company Managed Projects
+- `Work item-level` security specifies which users, groups, and project roles can see work
+- We use this security level when we need to make some work items closed from some users or to some users
+- it more like restricting view and access on the level of work items.
+
+- It use `Work item security schemes` & `Security Level`
+- Work item security scheme contain security levels which define who can view a work item
+
+- Subtasks inherit their parent work item’s security level.
+- Use Cases:
+    - Only the user in a specific field (like Reporter) to be able see that work item.
+    - Only a defined list of people to see certain work items.
+    - Only certain users to see work items so other project members don’t see clutter.
+    - Only certain users to see newly created work.
+
+- Steps:
+    - Create Work item security scheme
+    - Create Security levels inside of the scheme
+    - Assign user/groups/roles to each level
+    - Add the Security Level field to work items
+    - We then make our project use this work item security scheme `forgettable`
+
+## Notes on Permissions
+- Avoid using Public with most global permissions. Instead, use project permissions to control the access of anonymous users.
+- The Jira `Permission Helper` can help you understand a user's permissions. You can check a specific permission for a specific user, and even specify a work item key.
+
+- Project Role VS Groups
+    - Solving a problem of choosing which to use project role or Groups to give certain permission
+    - Project Roles are project based VS Groups are for the whole instance.
+    - If Users need a permission by default in all projects attached to that permission scheme, then I would use groups
+    - If the users/groups differ per project, then use project roles.
+    - note that you can also add groups to a project role.
+
+<div style="text-align: center;"><img src="images/Project Roles.jpeg" width="400" height="450" style="border-radius: 15px;"></div>
