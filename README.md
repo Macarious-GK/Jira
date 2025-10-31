@@ -464,7 +464,6 @@ the transition. However, they still apply when a user manually transitions the w
 - Perform action
     - perform actions after a transition executes
 
-
 #### Properties
 - are key-value pairs that can be used to further customize transitions.
 - Use properties to configure more detailed behaviors for your workflows.
@@ -475,10 +474,7 @@ the transition. However, they still apply when a user manually transitions the w
 - `Workflow scheme`:
     - act as container of work item types workflows
     - ex: workflow for tasks/epics, another workflow for story
-- `Workflow` 
-- we then 
-
-
+- `Workflow` (where you define the workflow and rules)
 
 - `STEPS`:
     - Create Workflow Scheme 
@@ -494,6 +490,7 @@ the transition. However, they still apply when a user manually transitions the w
 
 - Best practice:
     - use a transition rule to set resolutions automatically
+    - > Never rename a statues like `To Do` will change to all Jire product
 
 ### Configure team-managed workflows
 - Team-managed projects support most of the same workflow configurations as company-managed projects. But, you can’t:
@@ -501,11 +498,9 @@ the transition. However, they still apply when a user manually transitions the w
     - Use transition screens
     - Use resolutions
 
+- Steps:
+    - Space Settings -> Work Type -> chose any work type -> edit workflow
+
 ## Automation
 
 
-
-
-- retstrict: check to done & Inprogress to done (only group testrole can move this issues) ready to inpgress (the assgine to this item)
-- validate: ready to check (you have to set priroty and assginee and descriopiotn) 
-- post: ready to done (will replace the feild of resoltion to wont do)
