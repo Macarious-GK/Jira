@@ -285,8 +285,7 @@ In order to make your permissions and roles really effective you have to set the
 
 
 
-# ***`Access & Permissions`***
-
+# ***`Access & Permissions & Security` 28%***
 - There are 3 Levels of permissions in Jira
     - Product 
     - Project/Space 
@@ -373,10 +372,6 @@ In order to make your permissions and roles really effective you have to set the
 - Step Four: Change the Project Permission scheme to the created one
 - Step Five: add People (Users/Groups) and assign to them Project Roles
 
-
-
-
-
 ## 3. Work item security permissions
 ### Team Managed Projects
 - `Work restrictions` control which project roles can view newly created work items of that type
@@ -403,9 +398,25 @@ In order to make your permissions and roles really effective you have to set the
     - Add the Security Level field to work items
     - We then make our project use this work item security scheme `forgettable`
 
+#### Troubleshoot Work Item security
+- We Consider:
+    - Work item scheme & its security level
+    - which group/user/role assigned to which level
+    - the visibility of issue security level field
+    - the permission in permissions scheme grated to user/role/group (view issue/edit issue & issue security)
+    - 
+- Note on the `visibility` of Work item security scheme
+    - Ensure the project’s screen schemes include the Security Level field for the necessary work types in the right place.
+    - Ensure the project’s field configuration schemes show the Security Level field for the necessary screens and apply to the necessary work types.
+    - Ensure the project’s layout for work items doesn’t hide the Security Level field when it’s empty.
+
+
+
 ## Notes on Permissions
 - Avoid using Public with most global permissions. Instead, use project permissions to control the access of anonymous users.
 - The Jira `Permission Helper` can help you understand a user's permissions. You can check a specific permission for a specific user, and even specify a work item key.
+
+- Permissions is additive
 
 - Project Role VS Groups
     - Solving a problem of choosing which to use project role or Groups to give certain permission
@@ -415,3 +426,86 @@ In order to make your permissions and roles really effective you have to set the
     - note that you can also add groups to a project role.
 
 <div style="text-align: center;"><img src="images/Project Roles.jpeg" width="400" height="450" style="border-radius: 15px;"></div>
+
+# ***`Workflows and Automation` 14%***
+
+## Workflows
+- In every project we have work items that go through status from to do to complete.
+- The path that your work items take is called a `workflow`.
+- Each Jira workflow components
+    - ***Statuses***: represents the state of a work item at a particular point in the workflow
+    - ***Transitions***: represents the state of a work item at a particular point in the workflow
+        - one-way Transitions 
+        - Global transitions: move a work item from any status to that status vice versa
+    - ***Resolution***: provides more detail when users close a work item. (why this item closed)
+        - The Resolution field is only available in company-managed projects.
+- There are default workflows based on the project 
+- There is `simplified workflow` (scrum/kanban) 
+    - uses global transitions 
+    - no transition screens, and has no conditions applied to its transitions
+- `Custom workflows` used for complex requirements
+    - use transitions, conditions, user input validation, or automated functions
+
+### Complex Workflow 
+#### Triggers
+- `Triggers` automatically transition work when certain events occur in your ***development tools***
+- `Notes`: When a transition triggers automatically, it ignores any transition rules, or permissions configured on 
+the transition. However, they still apply when a user manually transitions the work item.
+
+#### Rules
+- Restrict transition (conditions):
+    - Criteria that the workflow must meet before it can transition a work item.
+    - If a user does not meet the condition, they won’t even see the button on the issue screen.
+
+- Validate details
+    - Check that any input given during the transition is valid before it transitions the work item.
+    - Check that required conditions are true after the user clicks the transition, but before it executes.
+
+- Perform action
+    - perform actions after a transition executes
+
+
+#### Properties
+- are key-value pairs that can be used to further customize transitions.
+- Use properties to configure more detailed behaviors for your workflows.
+- Workflows commonly use properties to further restrict permissions beyond a company-managed project’s permission scheme.
+
+### Configure company-managed workflows
+
+- `Workflow scheme`:
+    - act as container of work item types workflows
+    - ex: workflow for tasks/epics, another workflow for story
+- `Workflow` 
+- we then 
+
+
+
+- `STEPS`:
+    - Create Workflow Scheme 
+    - Create workflow 
+    - In workflow create:
+        - Status 
+        - Transitions (flow between status)
+        - Restrict, Validate, Perform action for Transition rules
+        - Use Triggers/ Properties in status 
+        - Publish the workflow
+        - Use it in Project
+        - assign it to work type 
+
+- Best practice:
+    - use a transition rule to set resolutions automatically
+
+### Configure team-managed workflows
+- Team-managed projects support most of the same workflow configurations as company-managed projects. But, you can’t:
+    - Use the same workflow for multiple work types
+    - Use transition screens
+    - Use resolutions
+
+## Automation
+
+
+
+
+- retstrict: check to done & Inprogress to done (only group testrole can move this issues) ready to inpgress (the assgine to this item)
+- validate: ready to check (you have to set priroty and assginee and descriopiotn) 
+- post: ready to done (will replace the feild of resoltion to wont do)
