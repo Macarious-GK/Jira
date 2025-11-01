@@ -502,5 +502,62 @@ the transition. However, they still apply when a user manually transitions the w
     - Space Settings -> Work Type -> chose any work type -> edit workflow
 
 ## Automation
+- Automation rules are essentially if-then statements.
+- Automation Configuration Components:
+    - Triggers
+    - Conditions
+    - Actions
+- There are several ways to create automation rules:
+    - Select a template that meets your needs.
+    - Use natural language to have AI create automations for you.
+    - Use the rule builder to manually build custom automation rules from scratch.
+
+### Complex automation 
+- `Smart values`
+    - Are essentially variables, acting as placeholders for dynamic data in conditions and actions. 
+    - They allow you to access and manipulate data without using hard-coded values
+    - ex: {{now}}, {{user.emailAddress}}
+
+- `Branches` 
+    - A branch acts as an independent sub-rule within an automation rule. 
+    - think like (When something happens to one issue, also do something to its related issues.)
+    - 
+    - 
+
+- Advanced components are reusable rule pieces — like small automation blocks you can use in many rules.
+
+### Notes
+- While you can't add multiple triggers to a single rule, in some products, like Jira, the Multiple work item events trigger enables you to select more than one event related to work as part of a single trigger.
+
+# ***`Notifications` 8%***
+
+## Notifications for company-managed projects using schemes
+- `Notification scheme`:
+    - associate events with specific email recipients.
+    - it uses system events & Custom events
+- The scheme has event (system event) and Recipients (role/user/group)
+- The Workflow has event fired when item created or moved in transitions
+- This event is associated with the notification scheme and assigned to a recipient 
+- Make sure that user Personal settings notification is correct 
+
+### Notes
+- Users can configure some of their own notifications through their Jira settings. Their preferences override notification schemes.
+- make sure to only send notifications for events that users truly need to know about as they happen. 
+- You can use dashboards and reports to share information that isn’t time sensitive.
+
+### Troubleshoot notifications
+- the user have the right permissions?
+- user opt out of notifications in their personal settings?
+- workflow firing the correct event?
+
+## Internal notifications in team-managed projects
+- We define notification not using scheme but through project settings -> Notification
+- we simply define what action/event we should alert the recipient on 
+- Make sure that user Personal settings notification is correct 
 
 
+
+Day 1 -> Auto + Notification
+Day 2 -> JQL + ScriptRunner
+Day 3 -> Fields + Screens
+Day 4 -> Agile + DevOps
