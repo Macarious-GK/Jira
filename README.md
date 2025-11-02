@@ -60,19 +60,6 @@
 - `List View`: edit items in place  
     - Also used for bulk actions
 
-### Search to find information in Jira
-- Types
-    - Search Bar
-    - Basic 
-    - Advanced
-- You can only use basic search to find work items, not projects or boards. If you want to find a project or board, the search bar can help
-
-- Basic
-    - Go to basic search
-    - Enter a keyword
-    - Set criteria
-    - Sort your results
-- Advanced JQL
 
 ### Schedule work with the Timeline and Calendar views in Jira
 - provide two views
@@ -502,32 +489,80 @@ the transition. However, they still apply when a user manually transitions the w
     - Space Settings -> Work Type -> chose any work type -> edit workflow
 
 ## Automation
-- Automation rules are essentially if-then statements.
-- Automation Configuration Components:
-    - Triggers
-    - Conditions
-    - Actions
+
+- There are two types of rules:
+    - Global rule -> across spaces
+    - Project rule -> for project only
+
 - There are several ways to create automation rules:
-    - Select a template that meets your needs.
+    - Select a template that meets your needs. `(automation template library)`
     - Use natural language to have AI create automations for you.
     - Use the rule builder to manually build custom automation rules from scratch.
+- Automation rules are essentially if-then statements.
 
-### Complex automation 
-- `Smart values`
-    - Are essentially variables, acting as placeholders for dynamic data in conditions and actions. 
-    - They allow you to access and manipulate data without using hard-coded values
-    - ex: {{now}}, {{user.emailAddress}}
+### rule details
+- Every rule has its important details:
+    - Name/description
+    - Scope 
+    - Owner/ Actor
+    - Allow rule trigger checkbox -> Enable trigger this rule as an action at the end of another rule.
 
-- `Branches` 
-    - A branch acts as an independent sub-rule within an automation rule. 
-    - think like (When something happens to one issue, also do something to its related issues.)
-    - 
-    - 
+### building blocks of automation
+#### Triggers (required)
+- This tells jira to do the automation rule
+- Every rule can has only one trigger
+- Triggers can be set to run on a schedule, or manual or for event in jira 
+- For multiple trigger, we can use ***Multiple work item events*** trigger
+    - automate the same rule for multiple events/triggers
+- For a specific Trigger that we want to use but for only certain filtered event.
+- A trigger-level condition is a filter built directly into the trigger itself, instead of being a separate “Condition” block later in your rule.
 
+#### Conditions (optional)
+- We need to check for a certain criteria, that must be met for your rule to continue running.
+- Common:
+    - Work item fields condition
+    - JQL condition
+    - User condition
+    - Related work items condition
+
+#### Branches (optional)
+- Branching means creating a side path in your rule.
+- a section that does actions on other related issues, not just the one that triggered the rule.
+- Branching is like looping through the related issues  that are connected to the main trigger issue.
+- when use a brach the main flow go as it, so 2 flows run simultaneously
+- Two Main Types: 
+    - Related Work Items (for related work items)
+    - Advanced branching ( enter a smart value, and perform actions on that value as an object)
+    - Branch at the same time ( more than one branch)
+
+- Ex: update all subtasks for the task that triggered the automation rule
+
+#### Advanced components (optional)
 - Advanced components are reusable rule pieces — like small automation blocks you can use in many rules.
+    - Delay until
+    - Loop
+    - Branch at the same time ( multiple groups of automation rule components to execute simultaneously)
 
-### Notes
-- While you can't add multiple triggers to a single rule, in some products, like Jira, the Multiple work item events trigger enables you to select more than one event related to work as part of a single trigger.
+#### Actions (required)
+- The actual action performed if the rule is triggered and complete to the action.
+
+### Smart values
+
+- Are essentially variables, acting as placeholders for dynamic data in conditions and actions. 
+- They allow you to access and manipulate data without using hard-coded values
+- ex: {{now}}, {{user.emailAddress}}
+
+### Best practice
+- Use log action
+- Validate your rules using the "notify on error" setting
+
+### Tasks
+- Clean up task
+- close an epic when all stories have been completed.
+- remind a user of the uncommented tasked assgined to him
+- test if else
+
+- Perform action to all sub tasks of epic using Branch
 
 # ***`Notifications` 8%***
 
@@ -557,7 +592,72 @@ the transition. However, they still apply when a user manually transitions the w
 
 
 
+# ***`Advanced User Features` 12%***
+
+## JQL 
+- Jira Query Language for search work items in jira space/ product(instance)
+- All JQL queries do two things:
+    - Select a subset of work items.
+    - Order the results.
+
+### Elements of JQL syntax
+- A query is the statement you use to run a search
+- A query is made up of multiple **clauses**.
+
+- Each clause is made up of multiple elements. The elements of JQL syntax are:
+- > Field
+    - *System fields*, such as project, status, created date, and assignee, are included with every Jira instance. 
+    - *Custom fields* are created by a Jira admin to expand the types of information Jira collects.
+- > Operator `used to compare the field to a value within that field`
+    - =, !=, IS, IS NOT, IN, NOT IN
+- > Value 
+    - the information that is being searched for in the field.
+- > Keyword
+    - AND, OR, ORDER BY (ASC, DESC)
+- > Function (performs a calculation or gathers information)
+    - currentUser()
+    - created >= startOfWeek(“-5”)
+    - `project = MYT AND updated < now() AND created <= "2025-11-01 23:14"`
+
+- Search with ***text-based*** fields
+    - operators: Contains -> `~`, Does not contain -> `!~`, `Is`, `Not`
+    - fuzzy matches -> `""` and exact matches `//`
+    - Use: `text` ~ "update" to search in any text felid in the work item
+    - Ex: `project = myteam AND summary ~ "test" AND description !~ "test" ORDER BY created DESC`
+
+- Search with ***multiple clauses***
+    - `Parentheses` are used to contain arguments
+    - Ex: `project = DUBLIN AND (description ~ investigation OR labels = investigation)`
+
+- If you want to regularly check the results of a filter, you can subscribe to it.
+
+- Important Function:
+    - openSprints()
+    - currentUser()
+
+- Tips:
+    - Make the queries dynamic using functions 
+        - for all any user by `currentUser`
+        - any open sprint by `currentUser`
+        - for work that not been assigned to any one use `assignee is empty`
+        - Use `statusCategory` instead of status only
+    - Use resolution
+
+## Configure filters, dashboards, subscriptions
+- A `subscription` is an automatic email report you can set up for a saved filter in Jira.
+- `Dashboard`:
+    - You can use multiple projects as data sources for a dashboard. 
+    - You can only select a single filter for a gadget. You can’t select multiple filters or combine multiple filters.
+    - Common:
+        - Filter Results
+        - Activity Streams
+- `IMPORTANT`:
+    - Remember, some gadgets use filters as their data source. The filters must also be shared so that users can view the information in these gadgets on a shared dashboard.
+## bulk operations
+
+
+
 Day 1 -> Auto + Notification
-Day 2 -> JQL + ScriptRunner
+Day 2 -> JQL 
 Day 3 -> Fields + Screens
 Day 4 -> Agile + DevOps
