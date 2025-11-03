@@ -455,6 +455,7 @@ the transition. However, they still apply when a user manually transitions the w
 - are key-value pairs that can be used to further customize transitions.
 - Use properties to configure more detailed behaviors for your workflows.
 - Workflows commonly use properties to further restrict permissions beyond a company-managed project’s permission scheme.
+- Ex: make work item not editable in some state 
 
 ### Configure company-managed workflows
 
@@ -657,7 +658,109 @@ the transition. However, they still apply when a user manually transitions the w
 
 
 
-Day 1 -> Auto + Notification
+# ***`Issue Types, Fields, Screens` 18%***
+- > **Field** is *on* a **Screen** `->` **Screen** is *inside* **Screen Scheme** `->` That *Screen Scheme* is *associate* with **Work Type Screen Scheme**
+
+## Work Types
+- `Work types` indicate what category of work a work item represents.
+- Work types can have a `hierarchical` relationship, with some work types as the **parent** and others as the **child**.
+- `Work type schemes` define which work types company-managed projects use.
+- In `Jira Service `Management, work types are called **request types**, we also can Restricting request types.
+
+
+## Fields
+- `Fields` enable users to add and track data on work items.
+- We also can create `custom fields`
+- Jira admins specify the ***fields available for each work type*** using `work type screen schemes and field configuration schemes.`
+
+### Fields Types
+- > **Field** is *inside* a **Field Configuration** `->` **Field Configuration** is *inside* **Field Configuration Scheme** `->` Inside that **Field Configuration Scheme** is **Field Configuration** *associated* with **Work Types**
+
+#### System Fields
+- There are `system fields` critical to how work items function, ex: Key field
+- They uniquely identify work
+- fields include:
+    - Work type, Project, Work item key, Summary, Description, Reporter, Assignee, Status, Resolution, Priority , Original estimate, Remaining estimate, Security level
+- Some Important fields:
+    - The Priority field defines a work item's importance in relation to other work.
+    - The Resolution field defines how work is completed
+    - The Status field represents the position of the work item within a workflow. 
+#### Custom Fields
+- This is created filed by the user and its customizable
+
+### Field Configuration
+- Define the appearance and behavior of fields.
+- It has fields name, Description, Required (text rendering, hidden, and required fields)
+- Work items use Default Field Configuration Scheme that use Default Field Configuration
+- ex: make a field required for certain work type
+
+### Field Configuration Scheme
+- Uses Field Configuration and associate it to certain work types
+- Jira admins define which work types use which field configurations in field configuration schemes.
+- Scheme Structure:
+    - ***Work Type** `->` **Field Configuration***
+
+## Screens
+- A `screen` is a configuration of fields that users see in a specific work item operation.
+    - EX: Create screen determines what fields users see when creating work.
+- Jira admins *configure screens* by adding and removing **tabs**, adding and removing **fields on tabs**, and changing the order of fields.
+- `screen scheme` is where we tight a *screen with work item operation (Create, Edit, or View)*
+- After you configure `screen schemes`, you **associate** the **screens** with **different work types** in a ***work type screen scheme***.
+
+- Make sure to include required fields (Summary, Description, and Status) on your screens, or users won’t be able to create work from that screen.
+- You can use tabs to group related fields
+
+### Screen schemes
+- `screen schemes` to determine which screens appear for each work item operation.
+- There are technically three work item operations: 
+    - Create Issue
+    - Edit Issue
+    - View Issue 
+- the Edit screen is redundant. Users edit work inline while looking at the View screen, so you shouldn’t configure a separate screen for Edit and View
+
+- Screen schemes don't associate screens with workflows, even though workflows can use screens. You associate a screen with a workflow in the workflow editor.
+
+- `IMPORTANT`: (if we need some field to be viewed but not editable )
+    - we make this edit screen same as view screen but remove the field from the edit screen.
+
+- `Map operation to Screen`
+- ex: create -> screen_1, view -> screen_2
+### Work type screen schemes 
+- Work type screen schemes determine what screen appears during each operation for each work type.
+- `Map Screen schemes (the create/edit/view screens) To Work Type`
+- ex: bug -> screen scheme_1, story -> screen scheme_2
+
+<div style="text-align: center;"><img src="images/Screens.webp" width="1000" height="500" style="border-radius: 15px;"></div>
+
+## Layouts
+- company-managed project admins can customize their work items in the layout for work items.
+- It's based on the fields of the screen config, you can manipulate its view only.
+
+-  project admins can configure a layout for each screen scheme a project uses. This enables them to hide and reorder fields differently from the screens.
+
+
+
+## Notes
+- We control fields configuration (required/ Name/ Type/ description) `@` **Field Configuration** inside **Field Configuration Scheme**.
+- We also Can control the `existence` of a field thought the field configuration by adding it or removing it (Delete the field or Create new one).
+    - Main Job of (`field Configuration`): Make a field required, or add description inside paragraph field
+
+- We also Can control the `visibility` of a **field** in screens thought **Screen schemes** that will be used in **Work item Screen scheme**.
+
+- > [`Screens`]:
+- You can also use screens in the transition steps of workflows. These are different than work item operations.
+- when we just hide a field from screens, users can still search for it in queries, we can prevent this by hiding it in field configuration.
+
+
+
+
+# Revisions
+
+<div style="text-align: center;"><img src="images/screen_scheme_workflow_fieldconfig.webp" width="1000" height="500" style="border-radius: 15px;"></div>
+
+Day 1 -> Auto + Notification 
 Day 2 -> JQL 
 Day 3 -> Fields + Screens
 Day 4 -> Agile + DevOps
+
+
