@@ -158,13 +158,60 @@ In order to make your permissions and roles really effective you have to set the
 
 
 
-# APC
+
+
+
+# Other Topics
+
+## Connect to Data Center instances with application tunnels
+<div style="text-align: center;"><img src="images/apptunnels.png" width="1000" height="500" style="border-radius: 15px;"></div>
+
+- we can use app linking to link apps to each other, we need to create application tunnels
+- `Application tunnels` provide a secure pathway between your Atlassian cloud organization and Data Center instances that live in your network. 
+    - Tunnel server: You access it from admin.atlassian.com where you create a tunnel.
+    - Tunnel client: Installed as a Marketplace app in your Data Center instance.
+    - Application link (cloud): You create a tunneled application link in each of your Atlassian cloud apps and point it at an existing tunnel. You can link multiple cloud apps to a single tunnel. The application link must always be created on the cloud side.
+    - Application link (self-managed): The reciprocal link will be automatically created in your Data Center instance. Only incoming connections to your network use the tunnel, the outgoing ones will reach your Atlassian cloud apps directly.
+
+
+## Audit
+- we can audit from:
+    - (Jira -> System -> Audit Logs)
+    - (ِAdmin -> Security -> Audit Logs)
+
+## Restore & system backup
+- We create a backup and download it (option to include media)
+- We then can restore by  import it in jira
+- Only Org admin can import backup files.
+- We can Import work using ` External System Import `   
+    - You can import data from a CSV, JSON, or Trello file
+
+## Customize Jira Experience
+- Change Default Dashboard
+- Change App Logo & Name 
+- Change User Default preference
+- Change Color & fell
+
+## Some important settings 
+- Configure attachment settings
+    - limit the attachment size and enable ZIP support
+- Configure work linking
+    - enable the feature
+- Create application links
+- Time tracking in Jira
+- Audit Track
+    - audit log tracks key activities and configuration changes not everything
+    - actions that impact users and projects
+    - doesn’t track work item updates or pages
+
+
+# APC 120
 - Access, permissions, and security: 25%-30%
 - Issue types, fields, and screens: 15%-20%
 - Workflows and automation: 15%-20%
-- General project configuration: 10%-15%
 - Advanced user features: 10%-15%
 - Notifications: 5%-10%
+- General project configuration: 10%-15%
 - System administration: 5%-10%
 
 ## Intro
@@ -219,57 +266,6 @@ In order to make your permissions and roles really effective you have to set the
 - Only Jira admins can create and modify schemes and associate them with projects.
 
 <div style="text-align: center;"><img src="images/schema.png" width="600 " height="400" style="border-radius: 15px;"></div>
-
-
-# Advanced Topics
-
-## Connect to Data Center instances with application tunnels
-<div style="text-align: center;"><img src="images/apptunnels.png" width="1000" height="500" style="border-radius: 15px;"></div>
-
-- we can use app linking to link apps to each other, we need to create application tunnels
-- `Application tunnels` provide a secure pathway between your Atlassian cloud organization and Data Center instances that live in your network. 
-    - Tunnel server: You access it from admin.atlassian.com where you create a tunnel.
-    - Tunnel client: Installed as a Marketplace app in your Data Center instance.
-    - Application link (cloud): You create a tunneled application link in each of your Atlassian cloud apps and point it at an existing tunnel. You can link multiple cloud apps to a single tunnel. The application link must always be created on the cloud side.
-    - Application link (self-managed): The reciprocal link will be automatically created in your Data Center instance. Only incoming connections to your network use the tunnel, the outgoing ones will reach your Atlassian cloud apps directly.
-
-
-## Audit
-- we can audit from:
-    - (Jira -> System -> Audit Logs)
-    - (ِAdmin -> Security -> Audit Logs)
-
-## Restore & system backup
-- We create a backup and download it (option to include media)
-- We then can restore by  import it in jira
-- Only Org admin can import backup files.
-- We can Import work using ` External System Import `   
-    - You can import data from a CSV, JSON, or Trello file
-
-
-# Secondary Topics
-## Customize Jira Experience
-- Change Default Dashboard
-- Change App Logo & Name 
-- Change User Default preference
-- Change Color & fell
-
-## Some important settings 
-- Configure attachment settings
-    - limit the attachment size and enable ZIP support
-- Configure work linking
-    - enable the feature
-- Create application links
-- Time tracking in Jira
-- Audit Track
-    - audit log tracks key activities and configuration changes not everything
-    - actions that impact users and projects
-    - doesn’t track work item updates or pages
-
-## Integrate Jira with a repository
-
-
-
 
 
 # ***`Access & Permissions & Security` 28%***
@@ -667,6 +663,21 @@ the transition. However, they still apply when a user manually transitions the w
 - `Work type schemes` define which work types company-managed projects use.
 - In `Jira Service `Management, work types are called **request types**, we also can Restricting request types.
 
+### Work type hierarchy
+- The work **type hierarchy** controls how work items interact with each other across Jira.
+- You can only add levels higher than the Epic level of the hierarchy. You can’t add levels between the defaults or below them
+
+<div style="text-align: center;"><img src="images/workhiraricy.png" width="850" height="500" style="border-radius: 15px;"></div>
+
+### Create work types
+- We can create a new work type and add icon to it, then we add it to a work type scheme 
+
+### Work type scheme
+- Work type schemes define which work types are available to associated company-managed projects. 
+- Structure: Work type scheme -> (Containing selected work types) -> Project 
+- There’s a **default work type scheme** that *automatically* updates to include all work types in your site.  
+    - you should avoid associating the default work type scheme with projects
+
 
 ## Fields
 - `Fields` enable users to add and track data on work items.
@@ -687,6 +698,11 @@ the transition. However, they still apply when a user manually transitions the w
     - The Status field represents the position of the work item within a workflow. 
 #### Custom Fields
 - This is created filed by the user and its customizable
+- For the fields that is not Locked(jira fields), we can edit its context
+- `Context`:
+    - we use it when we have a field that should be used in two different situation and have different values 
+    - Same field but different values (context)  
+
 
 ### Field Configuration
 - Define the appearance and behavior of fields.
@@ -733,6 +749,7 @@ the transition. However, they still apply when a user manually transitions the w
 <div style="text-align: center;"><img src="images/Screens.webp" width="1000" height="500" style="border-radius: 15px;"></div>
 
 ## Layouts
+- Layout = how fields are arranged when viewing the issue.
 - company-managed project admins can customize their work items in the layout for work items.
 - It's based on the fields of the screen config, you can manipulate its view only.
 
@@ -747,20 +764,201 @@ the transition. However, they still apply when a user manually transitions the w
 
 - We also Can control the `visibility` of a **field** in screens thought **Screen schemes** that will be used in **Work item Screen scheme**.
 
+- We also can control the arrangement of field in a screen using `Layouts`
+
 - > [`Screens`]:
-- You can also use screens in the transition steps of workflows. These are different than work item operations.
-- when we just hide a field from screens, users can still search for it in queries, we can prevent this by hiding it in field configuration.
+    - You can also use screens in the transition steps of workflows. These are different than work item operations.
+    - when we just hide a field from screens, users can still search for it in queries, we can prevent this by hiding it in field configuration.
+    - Copy screen and customize it 
+    -  use tabs to group related fields
+
+- > `[System fields]`:
+    - Naming resolutions is the most important part of configuring them
+    - Resolutions should only apply to work items that users won’t work on anymore.
+    - If work is done but has no resolution or has a resolution and it's not in done
+        - the problem is with your workflow transition/rules
+
+- > `[Field visibility in company-managed projects]`:
+    - Add the field to the screen associated with that work item operation
+    - Show the field in the project's layout for that work type
+    - Show the field in the work type's field configuration
+    - Grant the user access to that field and that work item in the project’s permission scheme
+    - Include the project and work type in the field context (for Jira fields only)
+
+- > `[field context]`:
+    - instead of creating more fields with nearly the same name (same purpose but different scope)
+    - we can create different context for one fields scoped by project and target work types
 
 
+# ***`Software Delivery Methodology & Frameworks`***
+## Agile
+- Agile is an approach/set of ideas towards work 
+- It focus on :
+    - Split up work to smaller chunks
+    - **prioritize** the most critical work
+    - delivering value to customers **more quickly**
+- Core Values:
+    - `Individuals and interactions` over *processes and tools*
+    - `Working software` over *comprehensive documentation*
+        - Delivering a product that works, not to make it perfect like minimum viable product ***`MVP`***
+    - `Customer collaboration` over *contract negotiation*
+    - `Responding to change` over *following a plan*
 
+### Agile Frameworks Scrum/Kanban
+- Agile Frameworks are instructions on how to apply those ideas to your work
+- Most Common Frameworks is Scrum & Kanban
 
+<div style="text-align: center;"><img src="images/agile_framework.png" width="500" height="300" style="border-radius: 15px;"></div>
+
+> ####  Kanban 
+
+- a framework that helps your team **visualize** work and continuously improve. 
+- kanban allows team members to **see the status of every work item**, at any time.
+- Kanban is a *more flexible* approach than scrum.
+- Kanban also has **backlog** but on the **first column** of the board
+- Kanban is a **pull system**. That means the team pulls new work items to the board when they have capacity.
+
+- The four principles of kanban are:
+    - Visualize your workflow over **kanban board**
+    - Set **limits on your works in progress** (WIP)
+    - Manage **the flow of work**
+    - Continuously improve
+
+- `kanban board in Jira`:
+- *board is the source of truth* for all work across your team.
+- kanban board and its `five` elements:
+    - Cards (an **individual** work item.)
+    - Columns (represent **status and workflow**)
+    - Work-in-progress limits (the **maximum amount** of work that can be in **one column at any given **time)
+    - Commitment point (the moment when an **item moves from the backlog to the board**. )
+    - Delivery point (when an item of work is complete. )
+
+- Tips for using kanban:
+    - Understand the workflow
+    - Why have limits? Many reasons! First, it prevents multitasking and improves focus by having the team work on a smaller set of tasks. 
+    - Before you cross the commitment point, make sure you understand what you're taking on.
+    - the team’s goal is to move cards from the commitment point to the delivery point as fast as possible.
+
+<div style="text-align: center;"><img src="images/kanban.webp" width="600" height="300" style="border-radius: 15px;"></div>
+
+> #### Scrum
+- a framework that focuses on iterative and incremental deliveries. 
+- `Sprints`: 
+    - Work gets completed in short, time-boxed increments. 
+    - Duration  1 to 4 weeks
+- `Artifacts`:
+    - items that provide key information to make the sprint cycle successful.
+    - **product backlog** `->` *primary list* of work that needs to get done.
+    - **sprint backlog** `->` items to be completed in the *current sprint cycle*.  
+    - **completed increment** `->` the *releasable* product delivered at the end of a sprint
+
+- `Events`
+    - called **ceremonies**, are full-team meetings to ensure everyone is in sync. 
+    - **Sprint planning**: 
+        - Work items are pulled from the product backlog to the sprint backlog
+        - determine a sprint goal 
+    - **Daily stand up**: 
+        - short meeting for team members to share progress and voice concerns about blockers
+        - Typically 15 minutes long, the goal is to make sure everyone is on the same page.
+        - Yesterday / today work & Blocker?
+    - **Sprint review**:  
+        - a meeting at the end of the sprint 
+        - shares a demonstration of the work completed & sprit goals
+    - **Retrospective**: 
+        - internal meeting after a sprint ends for the team to reflect on what worked well and what needs to be improved in the next sprint    
+
+- `Team`:
+    - Each scrum team should have 1 product owner, 1 scrum master, and 5 to 7 development team members. 
+    - **Product owner**: 
+        - understand the business and product vision 
+        - Build, manage, and prioritize the product backlog
+    - **Scrum master**:
+        - ensure the team is operating with the scrum process
+        - the mind for scrum in the team
+        - Manage events
+    - **Development team**:
+        - group that completes the hands-on tasks in a sprint. 
+
+<div style="text-align: center;"><img src="images/scrum.png" width="600" height="300" style="border-radius: 15px;"></div>
+
+- Summary:
+    - Before a sprint begins, the product owner looks at the product backlog and determines which work items are the highest priority. 
+    - Then, the scrum master leads a team-wide sprint planning meeting to pull work items from the product backlog to the sprint backlog. These are the work items the team will complete in the upcoming sprint.
+    - The two-week sprint starts, and team members move their work items across the scrum board. Then, every day, the team meets for a short 15-minute daily stand-up where they share progress and address any blockers. 
+    - At the end of the two weeks, the team met their sprint goal by delivering a completed product increment. Next, they host a sprint review meeting to share their work with stakeholders and gather feedback. Then, they have a retrospective meeting to discuss what they learned and what can be improved for future sprints.
+    - And, that's it! The team is ready to repeat the scrum cycle all over again.
+
+## DevOps
+- It is based on Agile
+- main phases:
+    - Plan 
+    - Build 
+    - Develop 
+    - Test
+    - Integrate
+    - Deploy
+    - Monitor
+
+## IT delivery lifecycle
+- `ITSM` information technology service management.
+- It's how IT teams manage the end-to-end delivery of IT services to their customers.  
+- ITSM teams oversee all kinds of workplace technologies, including laptops, servers, business-critical software applications, and Cloud services.
+
+- The principles of ITSM
+    - **Customer experience feedback** `->` regularly to improve service
+    - **clear business vision**
+    - Standardize the organization’s IT services
+
+- Benefits of ITSM:
+    - Aligns IT teams with business priorities
+    
 # Revisions
 
 <div style="text-align: center;"><img src="images/screen_scheme_workflow_fieldconfig.webp" width="1000" height="500" style="border-radius: 15px;"></div>
 
-Day 1 -> Auto + Notification 
-Day 2 -> JQL 
-Day 3 -> Fields + Screens
+Day 1 -> Auto + Notification  ✅
+Day 2 -> JQL  ✅
+Day 3 -> Fields + Screens ✅
 Day 4 -> Agile + DevOps
 
 
+
+- Atlassian:
+    - Jira Software ✅
+    - Jira Service Management 
+    - Confluence
+
+- software delivery methodology
+    - Agile ✅
+    - DevOps ✅
+    - IT delivery lifecycle.
+
+- Org admin managing users
+    - groups ✅
+    - roles ✅
+    - permissions ✅
+    - application access. ✅
+
+- project configuration
+    - custom workflows ✅
+    - custom fields ✅
+    - screens ✅
+    - permission schemes ✅
+    - notification schemes ✅
+    - automation rules. ✅
+
+- JQL skills: 
+    - able to build complex filters ✅
+    - saved searches ✅
+    - dashboard queries for different audiences (teams, management, audit, leadership). ✅
+
+- More:
+    - Reports
+    - Script Runner
+    - REST API
+
+- MyToDo:
+    - integrate as devops 
+    - integrate Github
+    - Create a Project as show case for workflow, fields, work types, automation, Screen, Notification with Security
+    - Create 5 Complex Filters + 3 Dashboards
