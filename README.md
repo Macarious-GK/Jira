@@ -1,210 +1,3 @@
-# Jira
-
-## Get started quickly with Jira
-- Atlassian product
-- Jira is project management software more like a TODO list for team Members
-
-- A `Work item` is the fundamental building block of any Jira Project
-
-- A `project` is a collection of related work items. In Jira, every work item belongs to a project.
-    - `Project keys`are short versions of the project name that identify the work items in that project. 
-
-- A `board` is a visualization of the work in a project.
-    - The work moves through three statuses, ***To Do, In Progress, and Done***. 
-    - Types of boards in Jira:
-        - `Kanban boards` support a continuous flow of work.
-        - `Scrum boards` track groups of work items that the team completes during a fixed period of time
-
-| Feature         | **Kanban Board**| **Scrum Board**  |
-| --------------- | --------------- | ---------------- |
-| **Work Flow**   | Continuous – work items move in and out anytime | Time-boxed – work happens in fixed-length sprints    |
-| **Focus**       | Continuous delivery and flow efficiency         | Delivering a set amount of work per sprint           |
-| **Planning**    | Ongoing, as needed                              | Planned at the start of each sprint                  |
-| **When to Use** | When priorities change frequently               | When you work in structured, sprint-based iterations |
-
----
-
-<div style="text-align: center;"><img src="images/worktypes.png" width="1000" height="500" style="border-radius: 15px;"></div>
-
-- Work Types
-    - `Epic` **(Parent *work items*)** : An epic represents a large body of work that can break down into smaller chunks.
-    - `Story` : a deliverable from the user's perspective, non-technical description of work item
-    - `Task` : a detailed description of a work item
-    - `Bug` : a problem or error. 
-    - `SubTask`: the smallest piece of work
-
-
-- Work Item fields:
-    - Work item key (unique identifier auto gen): project key + sequential number
-    - Summary & Description
-    - Labels
-    - Due Date
-    - Assignee and Reporter: 
-        - The **assignee** is the person assigned to work on the work item. The **reporter** is the person who created the work item. 
-        - **Only one user** can be in each field; you can’t have multiple assignees or reporters for a single work item.
-        
-## Track your work effectively in Jira
-
-- **Add attachments** to work items like png, link, etc..
-- View work item **history**
-- **Link** work items
-- relationship between work items
-    - Relates to
-    - Depends on / is depended on by
-    - Blocks / is blocked by
-    - Clones / is cloned by
-- Move work items
-    - Change Work Item Type
-    - Move SubTask to other parents
-    - Move work to other project
-- `List View`: edit items in place  
-    - Also used for bulk actions
-
-
-### Schedule work with the Timeline and Calendar views in Jira
-- provide two views
-    - Timeline view (Manage Dependency)
-    - Calendar view
-
-## Personalize how you work in Jira
-
-- A `dashboard `is a customized screen to give you a high-level snapshot of everything happening in Jira.
-- Dashboards are made up of small, configurable blocks called `gadgets`.
-
-- We can use shortcuts & Commands to navigate and edit work items 
-
-
-## Jira Admin
-
-### Roles:
-- organization admin (Manage sites)
-    - only individuals who can manage users, groups, and product access
-    - An org admin performs their tasks within the Atlassian Admin Hub 
-- Product admin == Jira admin   
-    - Configure product settings
-    - Create Project & Project Roles
-    - Assign global permissions
-- Project admin  (Depend on the type of the project)
-    - company-managed: adding users and groups to project roles. These work with the project permission scheme
-    -  team-managed: Create their own custom roles & adding users and groups to project roles & manage their own custom fields
-- site administrator 
-    - Manage billing & Manage products and app.
-
-### Best Practice
-
-- Best Practice:
-    - Persist Project Key
-    - Reuse other configurations: Use Schema 
-    - Test in a sandbox
-    - Create role-specific dashboards 
-- Steps to implement Jira:
-    - Discover and understand business requirements.
-    - Map requirements to Jira configurations.
-    - Implement in Jira.
-
-### Project  
-- `Project type`: (who can configure your project and if those configurations are shared)
-    - ***Team-managed*** projects (Flexible & Less Restrictive )
-    - ***Company-managed*** projects (Use Schema )
-
-- `Project Template`: ( provides pre-configurations for your project, like work types and workflows.)
-- four commonly Software project templates: 
-    - kanban (work-in-progress limits)
-    - scrum (work in sprints)
-    - bug tracking ( reported bugs, suggested improvements)
-    - top-level planning. (helps team or organization leads visualize and track large initiatives)
-
-
-- `Schemes`:
-    - collections of configurations can be reusable 
-    - Six schemes are always included in company-managed projects:
-        - Work type scheme
-        - Permission scheme
-        - Notification scheme
-        - Field configuration scheme
-        - Workflow scheme
-        - Work type screen scheme
-        
-<div style="text-align: center;"><img src="images/schema.png" width="600 " height="400" style="border-radius: 15px;"></div>
-
-- `Project roles and permissions`:
-    - Permissions add a layer of security
-    - Control the content that users can access and the actions they can perform.
-
-- `Global permissions` control system-wide functionality across all of Jira and Jira Service Management.
-    - Jira system administrators
-    - Jira administrators
-    - Jira users
-    - Browse users
-    - Make bulk changes
-
-- `Project permissions` control functionality in a project for users, groups, or project roles.
-    - Company-managed project permissions (permission schemes)
-        - Standalone permissions (control a single piece of functionality)
-        - Interrelated permissions (will not have any effect unless combined with other permissions)
-        - Permissions that need to meet global prerequisites in order to have an effect
-
-- Configure internal project access
-    - Permissions are different from internal project access. Internal project access determines how users outside of your project can interact with your project. 
-    - Types:
-        - Private (no external access or view )
-        - Limited (no External access but view)
-        - Open (External access & View)
-
-NOTE: 
-In order to make your permissions and roles really effective you have to set the Internal project access to one of two private or Omited
-
-
-
-
-
-
-
-
-# Other Topics
-
-## Connect to Data Center instances with application tunnels
-<div style="text-align: center;"><img src="images/apptunnels.png" width="1000" height="500" style="border-radius: 15px;"></div>
-
-- we can use app linking to link apps to each other, we need to create application tunnels
-- `Application tunnels` provide a secure pathway between your Atlassian cloud organization and Data Center instances that live in your network. 
-    - Tunnel server: You access it from admin.atlassian.com where you create a tunnel.
-    - Tunnel client: Installed as a Marketplace app in your Data Center instance.
-    - Application link (cloud): You create a tunneled application link in each of your Atlassian cloud apps and point it at an existing tunnel. You can link multiple cloud apps to a single tunnel. The application link must always be created on the cloud side.
-    - Application link (self-managed): The reciprocal link will be automatically created in your Data Center instance. Only incoming connections to your network use the tunnel, the outgoing ones will reach your Atlassian cloud apps directly.
-
-
-## Audit
-- we can audit from:
-    - (Jira -> System -> Audit Logs)
-    - (ِAdmin -> Security -> Audit Logs)
-
-## Restore & system backup
-- We create a backup and download it (option to include media)
-- We then can restore by  import it in jira
-- Only Org admin can import backup files.
-- We can Import work using ` External System Import `   
-    - You can import data from a CSV, JSON, or Trello file
-
-## Customize Jira Experience
-- Change Default Dashboard
-- Change App Logo & Name 
-- Change User Default preference
-- Change Color & fell
-
-## Some important settings 
-- Configure attachment settings
-    - limit the attachment size and enable ZIP support
-- Configure work linking
-    - enable the feature
-- Create application links
-- Time tracking in Jira
-- Audit Track
-    - audit log tracks key activities and configuration changes not everything
-    - actions that impact users and projects
-    - doesn’t track work item updates or pages
-
-
 # APC 120
 - Access, permissions, and security: 25%-30%
 - Issue types, fields, and screens: 15%-20%
@@ -218,54 +11,16 @@ In order to make your permissions and roles really effective you have to set the
 - **Atlassian organization** is top level that **contain sites**
 - each **site** represent a city associated with a **domain**
 - Each site can have licenses for one or more **Atlassian product**. 
+- `Jira` is project management software more like a TODO list for team Members
 
-
-## Implement Jira
-- three steps:
-    - Discover and understand **business requirements**.
-    - **Map** requirements to Jira configurations.
-    - **Implement** in Jira.
-
-### Roles:
-- organization admin (Manage sites)
-    - **only** individuals who can manage users, groups, and product access
-    - An org admin performs their tasks within the **Atlassian Admin Hub** 
-- Product admin == `Jira admin`   
-    - Configure product settings
-    - Create Project & Project Roles
-    - Assign global permissions
-- Project admin  (Depend on the type of the project)
-    - **company-managed**: adding users and groups to project roles. These work with the project permission scheme
-    -  **team-managed**: Create their own custom roles & adding users and groups to project roles & manage their own custom fields
-- site administrator 
-    - Manage billing & Manage products and app.
-
-## Project in Jira
-- `Project type`: (who can configure your project and if those configurations are shared)
-    - ***Team-managed*** projects (Flexible & Less Restrictive )
-    - ***Company-managed*** projects (Use Schema )
-
-- `Project Template`: ( provides pre-configurations for your project, like work types and workflows.)
-- four commonly Software project templates: 
-    - kanban (work-in-progress limits)
-    - scrum (work in sprints)
-    - bug tracking ( reported bugs, suggested improvements)
-    - top-level planning. (helps team or organization leads visualize and track large initiatives)
-
-
-- `Schemes`:
-    - collections of configurations can be reusable 
-    - Six schemes are always included in company-managed projects:
-        - Work type scheme
-        - Permission scheme
-        - Notification scheme
-        - Field configuration scheme
-        - Workflow scheme
-        - Work type screen scheme
-
-- Only Jira admins can create and modify schemes and associate them with projects.
-
-<div style="text-align: center;"><img src="images/schema.png" width="600 " height="400" style="border-radius: 15px;"></div>
+- A `Work item` is the fundamental building block of any Jira Project
+- A `project` is a collection of related work items. In Jira, every work item belongs to a project.
+    - `Project keys`are short versions of the project name that identify the work items in that project. 
+- A `board` is a visualization of the work in a project.
+    - The work moves through three statuses, ***To Do, In Progress, and Done***. 
+    - Types of boards in Jira:
+        - `Kanban boards` support a continuous flow of work.
+        - `Scrum boards` track groups of work items that the team completes during a fixed period of time
 
 
 # ***`Access & Permissions & Security` 28%***
@@ -409,6 +164,16 @@ In order to make your permissions and roles really effective you have to set the
     - note that you can also add groups to a project role.
 
 <div style="text-align: center;"><img src="images/Project Roles.jpeg" width="400" height="450" style="border-radius: 15px;"></div>
+
+
+- The hierarchy of permissions: 
+    - Product access 
+    - Global permission
+    - Project Permission scheme
+    - Board filter permissions
+    - Work item security level & permission scheme
+    - Field Config & Screen Schemes
+    - Workflow Conditions
 
 # ***`Workflows and Automation` 14%***
 
@@ -657,6 +422,26 @@ the transition. However, they still apply when a user manually transitions the w
 # ***`Issue Types, Fields, Screens` 18%***
 - > **Field** is *on* a **Screen** `->` **Screen** is *inside* **Screen Scheme** `->` That *Screen Scheme* is *associate* with **Work Type Screen Scheme**
 
+
+<div style="text-align: center;"><img src="images/worktypes.png" width="1000" height="500" style="border-radius: 15px;"></div>
+
+- Work Types
+    - `Epic` **(Parent *work items*)** : An epic represents a large body of work that can break down into smaller chunks.
+    - `Story` : a deliverable from the user's perspective, non-technical description of work item
+    - `Task` : a detailed description of a work item
+    - `Bug` : a problem or error. 
+    - `SubTask`: the smallest piece of work
+
+
+- Work Item fields:
+    - Work item key (unique identifier auto gen): project key + sequential number
+    - Summary & Description
+    - Labels
+    - Due Date
+    - Assignee and Reporter: 
+        - The **assignee** is the person assigned to work on the work item. The **reporter** is the person who created the work item. 
+        - **Only one user** can be in each field; you can’t have multiple assignees or reporters for a single work item.
+
 ## Work Types
 - `Work types` indicate what category of work a work item represents.
 - Work types can have a `hierarchical` relationship, with some work types as the **parent** and others as the **child**.
@@ -789,6 +574,162 @@ the transition. However, they still apply when a user manually transitions the w
     - instead of creating more fields with nearly the same name (same purpose but different scope)
     - we can create different context for one fields scoped by project and target work types
 
+# ***`General Project Configuration` 11%*** 
+## project types, templates, and shared configurations
+
+### Implement Jira
+- three steps:
+    - Discover and understand **business requirements**.
+    - **Map** requirements to Jira configurations.
+    - **Implement** in Jira.
+
+### Roles:
+- organization admin (Manage sites)
+    - **only** individuals who can manage users, groups, and product access
+    - An org admin performs their tasks within the **Atlassian Admin Hub** 
+- Product admin == `Jira admin`   
+    - Configure product settings
+    - Create Project & Project Roles
+    - Assign global permissions
+- Project admin  (Depend on the type of the project)
+    - **company-managed**: adding users and groups to project roles. These work with the project permission scheme
+    -  **team-managed**: Create their own custom roles & adding users and groups to project roles & manage their own custom fields
+- site administrator 
+    - Manage billing & Manage products and app.
+
+### Project in Jira
+- `Project type`: (who can configure your project and if those configurations are shared)
+    - ***Team-managed*** projects (Flexible & Less Restrictive )
+    - ***Company-managed*** projects (Use Schema )
+
+- `Project Template`: ( provides pre-configurations for your project, like work types and workflows.)
+- four commonly Software project templates: 
+    - kanban (work-in-progress limits)
+    - scrum (work in sprints)
+    - bug tracking ( reported bugs, suggested improvements)
+    - top-level planning. (helps team or organization leads visualize and track large initiatives)
+
+
+- `Schemes`:
+    - collections of configurations can be reusable 
+    - Six schemes are always included in company-managed projects:
+        - Work type scheme
+        - Permission scheme
+        - Notification scheme
+        - Field configuration scheme
+        - Workflow scheme
+        - Work type screen scheme
+
+- Only Jira admins can create and modify schemes and associate them with projects.
+
+<div style="text-align: center;"><img src="images/schema.png" width="600 " height="400" style="border-radius: 15px;"></div>
+
+
+
+## versions
+- A `version` is a set of features and fixes released together as a single update to your app.
+- We use/create versions in backlog for scrum/kanban to group work items to specific fixVersion.
+- A version in a **Scrum project** is pre-planned and is released when the planned work is complete. 
+- In a **Kanban space**, a version can be released at any time — the version will contain all work items that are complete at that time.
+
+
+
+
+## Configure components and auto-assignments
+- `Component` is a way to group related work items in the same project like Frontend or Backend items.
+- Jira components help you *group* work items in your space around product features, departments, or workstreams. 
+- You can assign component owners, and auto-assign people to work items linked to those components.
+- Represented as field in work items and configured in project settings
+
+## Board Config
+
+- Board is the a place the we use to display work item and it's work flow 
+- Board use JQL Filter to decide which items will be displayed on it
+- We can display work items from multiple projects to one board and vise versa.
+- Project & Boards
+    - one project -> one board
+    - one project -> many board
+    - many project -> one board
+    - many project -> many board
+- There are only two types of boards in Jira: `kanban boards and scrum boards`. 
+    - Kanban: visualize all the work items, not time boxed
+    - Scrum: depend on sprints, which contain some work items from the product backlog
+
+### board settings
+- `Board Administrators`: configure a board, including the work items that appear on it and its appearance.
+- `location`: where the board location
+- `Board filter`: which items filtered to be displayed on the board
+    - This filter also decide which user can view/edit the board (use/edit the filter) 
+    - Using ***board filter permissions*** to decide who is Viewer/Editor
+- `Board sub filter`: this only in kanban boards, added to the board filter query as *AND* 
+- `Quick filters` that allow users to limit which work items are displayed.
+
+### Jira board columns and statuses
+- Your board columns should follow your workflow statuses 
+- Each column can represent statuses or more
+- Use `column constraints` to specify the minimum or maximum number of work items for each column.
+    - User can add more or less, this only warn user that a constraint is broken
+- Backlogs:
+    - Scrum: by default, it has product backlog, and sprint backlog
+    - Kanban: Does not have separate backlog, instead it has backlog statue by default, we can enable separate one 
+- We use **Ranking** to Prioritize your team’s work
+
+### swimlanes
+- use swimlanes to group work horizontally, usually by field values. 
+- Ex: group by assignee, or priority
+- you can use to create swimlanes on either a kanban or scrum board.
+    - Queries (JQL) (match multiple queries will apply the first one only)
+    - Stories 
+        - creates a swimlane for each Story, Bug, or Task work item on your board and shows the sub-tasks within them. 
+    - Assignee (by their assignee)
+    - Epics (by their parent epic)
+    - Projects (by their project)
+    - None
+- Work items will only appear once on the board. If a work item meets the criteria for multiple swimlanes, it will appear only in one swimlane, whichever is closest to the top of the board.
+
+### Cards Color/Layout  
+
+- The `card colors feature` adds *a colored stripe to the side of a work item's card*.
+- This enables you to quickly differentiate work items or see information about them by Method field:
+    - Work types
+    - Priorities
+    - Assignees
+    - Queries (match multiple queries will apply the first one only)
+    - None
+
+- `The card layout` to add extra fields to cards on their board. 
+- This allows users to easily see more information without opening each card individually.
+
+### Estimate effort on work in Jira
+- Estimation statistics enable your team to effectively plan your sprints.
+- you manage your sprint time with several different estimation statistics.
+- you can determine each item needed effort to be completed using the estimate effort method
+- Methods:
+1. Story points (common)
+    - ***arbitrary numbers that measure the complexity of one work item relative to others***
+    - determine how big the item is according to the number 
+    - no direct relation with time
+2. Original time estimate
+    - the number of minutes, hours, days, or weeks you think it’ll take to complete a work item.
+    - estimates are relative to one another (don't adjust mid spring) reflect on `velocity`
+3. Work item count
+    - number of work item (nearly simpler to each other regarding work effort needed) that a team can do in a sprint
+4. Any custom numeric field
+
+- `estimation with reports`:
+    - Burndown Chart
+    - Burnup Chart
+    - Sprint Report
+    - Velocity Chart
+    - Epic Report and Epic Burndown
+    - Version Report and Release Burndown
+    
+- `Time Tracking`:
+    - If your team uses time to estimate or measure their work, you can use time tracking.
+    - This provides visibility into the progress made on each work item and how much is still to be completed. 
+
+
+
 
 # ***`Software Delivery Methodology & Frameworks`***
 ## Agile
@@ -912,6 +853,83 @@ the transition. However, they still apply when a user manually transitions the w
 - Benefits of ITSM:
     - Aligns IT teams with business priorities
     
+
+# ***`Other Topics`***
+
+## Connect to Data Center instances with application tunnels
+<div style="text-align: center;"><img src="images/apptunnels.png" width="1000" height="500" style="border-radius: 15px;"></div>
+
+- we can use app linking to link apps to each other, we need to create application tunnels
+- `Application tunnels` provide a secure pathway between your Atlassian cloud organization and Data Center instances that live in your network. 
+    - Tunnel server: You access it from admin.atlassian.com where you create a tunnel.
+    - Tunnel client: Installed as a Marketplace app in your Data Center instance.
+    - Application link (cloud): You create a tunneled application link in each of your Atlassian cloud apps and point it at an existing tunnel. You can link multiple cloud apps to a single tunnel. The application link must always be created on the cloud side.
+    - Application link (self-managed): The reciprocal link will be automatically created in your Data Center instance. Only incoming connections to your network use the tunnel, the outgoing ones will reach your Atlassian cloud apps directly.
+
+
+## Audit
+- we can audit from:
+    - (Jira -> System -> Audit Logs)
+    - (ِAdmin -> Security -> Audit Logs)
+
+## Restore & system backup
+- We create a backup and download it (option to include media)
+- We then can restore by  import it in jira
+- Only Org admin can import backup files.
+- We can Import work using ` External System Import `   
+    - You can import data from a CSV, JSON, or Trello file
+
+## Customize Jira Experience
+- Change Default Dashboard
+- Change App Logo & Name 
+- Change User Default preference
+- Change Color & fell
+
+## Some important settings 
+- Configure attachment settings
+    - limit the attachment size and enable ZIP support
+- Configure work linking
+    - enable the feature
+- Create application links
+- Time tracking in Jira
+- Audit Track
+    - audit log tracks key activities and configuration changes not everything
+    - actions that impact users and projects
+    - doesn’t track work item updates or pages
+
+
+## Track your work effectively in Jira
+
+- **Add attachments** to work items like png, link, etc..
+- View work item **history**
+- **Link** work items
+- relationship between work items
+    - Relates to
+    - Depends on / is depended on by
+    - Blocks / is blocked by
+    - Clones / is cloned by
+- Move work items
+    - Change Work Item Type
+    - Move SubTask to other parents
+    - Move work to other project
+- `List View`: edit items in place  
+    - Also used for bulk actions
+
+
+### Schedule work with the Timeline and Calendar views in Jira
+- provide two views
+    - Timeline view (Manage Dependency)
+    - Calendar view
+
+## Personalize how you work in Jira
+
+- A `dashboard `is a customized screen to give you a high-level snapshot of everything happening in Jira.
+- Dashboards are made up of small, configurable blocks called `gadgets`.
+
+- We can use shortcuts & Commands to navigate and edit work items 
+
+
+
 # Revisions
 
 <div style="text-align: center;"><img src="images/screen_scheme_workflow_fieldconfig.webp" width="1000" height="500" style="border-radius: 15px;"></div>
@@ -957,8 +975,17 @@ Day 4 -> Agile + DevOps
     - Script Runner
     - REST API
 
-- MyToDo:
-    - integrate as devops 
-    - integrate Github
-    - Create a Project as show case for workflow, fields, work types, automation, Screen, Notification with Security
-    - Create 5 Complex Filters + 3 Dashboards
+# My Practice:
+- integrate as devops 
+- integrate Github
+- Create a Project as show case for workflow, fields, work types, automation, Screen, Notification with Security
+- Create 5 Complex Filters + 3 Dashboards
+
+
+## Automation
+- Before we start building we should:
+    - the goal of the rule
+    - what will trigger the rule
+    - Which issues are affected?
+
+1. Auto-Close Sub-Tasks When Parent Is Done

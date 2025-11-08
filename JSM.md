@@ -36,7 +36,6 @@
 -  `Priority groups` are collections of queues that agents can easily switch between
 
 
-
 ## Roles
 - An `agent` is a licensed user who works on customer requests and adds customers to the service project. 
 - A `collaborator` is a user who works with agents, but likely belongs to another team, like Engineering or Finance
