@@ -943,7 +943,7 @@ Day 4 -> Agile + DevOps
 
 - Atlassian:
     - Jira Software ✅
-    - Jira Service Management 
+    - Jira Service Management ✅
     - Confluence
 
 - software delivery methodology
