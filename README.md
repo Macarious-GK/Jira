@@ -1,11 +1,43 @@
 # APC 120
 - Access, permissions, and security: 25%-30%
+    - administrator privileges 
+    - global permissions
+    - Project Permissions
+    - issue-level security
+
 - Issue types, fields, and screens: 15%-20%
+    - Issue types
+    - Fields & Field Configuration 
+    - screens and issue layout
+
 - Workflows and automation: 15%-20%
+    - company-managed workflows
+    - team-managed workflows
+    - automation rules
+
 - Advanced user features: 10%-15%
-- Notifications: 5%-10%
+    - advanced JQL queries
+    - filters, dashboards, subscriptions filters, dashboards, subscriptions
+    - bulk operations
+
 - General project configuration: 10%-15%
+    - project types, templates, and shared configurations
+    - project details and sidebar
+    - versions
+    - components and auto-assignments
+
+- Notifications: 5%-10%
+    - company-managed notifications
+    - team-managed notifications
+    - personal notification settings
+    - mail handlers
+
 - System administration: 5%-10%
+    - global user interface features
+    - attachments, issue links, app links, time-tracking globally
+    - statuses, resolutions, priorities and sub-tasks globally
+    - system backup and import
+
 
 ## Intro
 - **Atlassian organization** is top level that **contain sites**
@@ -729,6 +761,77 @@ the transition. However, they still apply when a user manually transitions the w
     - This provides visibility into the progress made on each work item and how much is still to be completed. 
 
 
+# ***`Jira Apps Marketplace`***
+## ScriptRunner 
+- Used to automation repetitive tasks
+- Enhance use experience
+- administrative tasks
+
+### `Automation Capabilities`
+- We can run automation:
+    - Immediately -> **Script Console**
+    - on schedule -> **Schedule Jobs or Escalation Service**
+    - on event -> **Script Listeners**
+
+- **Script Console**
+    - The Script Console is a place to run scripts
+    - enables you to run one-off ad hoc scripts
+    - helps you learn and experiment with ***the Jira REST API***
+- **Script Listeners**
+    - A listener is an automated procedure or function in ScriptRunner that waits (or listens) for a specific event to occur in Jira and then carries out an action if the event occurs. 
+- **Schedule Jobs**:
+    - allow you to automate the running of scripts at regular intervals saving your administrators time
+- **Escalation Service**
+    - you define a process for modifying issues after a certain amount of time has elapsed. 
+
+### `Scripted Workflow Extensions`
+- This add more customized functionality for the workflow transitions rules by using scripts in groovy
+- Script Conditions use Jira Expression
+- Methods:
+    - Conditions -> Choose **ScriptRunner Script**
+    - Validators -> Choose **ScriptRunner Script**
+    - Post Functions -> Choose **ScriptRunner Script**
+
+### `Enhanced Search`
+- Make JQL more powerful, add more functionality
+- We can create advanced Query and save it as filters and sync it
+
+### `Introduction to Jira Expressions`
+- It's an expressions used to access and compare variables and its properties
+- Used in Transitions customization
+- Javascript Based 
+
+<div style="text-align: center;"><img src="images/jira experission.png" width="600" height="150" style="border-radius: 15px;"></div>
+
+- EX: check number of comment more than 0 AND the user is in group 'Admins'
+```javascript
+issue.comments.length > 0 && user.group.includes('Admins')
+issue.comments.every(comment => comment.body.plainText.length > 10) 
+```
+[Here_Jira_expressions](https://developer.atlassian.com/cloud/jira/software/jira-expressions/#context-variables)
+
+
+### `REST API`
+- **Representational State Transfer** is a type of HTTP API that are **lightweight** and manipulate data through clear resource-based **URLs**.
+- REST APIs are **stateless**, meaning every request contains all the info needed, the server doesn’t remember between requests.
+- It uses **standard HTTP methods** like GET, POST, PUT, and DELETE to perform actions on resources
+- Return **Json Formate**
+
+```groovy
+def result = put("/rest/api/2/issue/${issueKey}")
+```
+
+[JIRA REST API](https://developer.atlassian.com/cloud/jira/platform/rest/v3/)
+
+### Groovy for ScriptRunner Cloud
+- Used in ScriptRunner for custom automation scripts, Based on Java
+- Syntax:
+    - KeyWords **if**
+    - Identifier 
+    - Variables **defined by def**
+    - Strings **""**
+    - Comments **//**
+
 
 
 # ***`Software Delivery Methodology & Frameworks`***
@@ -944,7 +1047,7 @@ Day 4 -> Agile + DevOps
 - Atlassian:
     - Jira Software ✅
     - Jira Service Management ✅
-    - Confluence
+    - Confluence ✅
 
 - software delivery methodology
     - Agile ✅
@@ -972,6 +1075,7 @@ Day 4 -> Agile + DevOps
 
 - More:
     - Reports
+    - JMWE
     - Script Runner
     - REST API
 

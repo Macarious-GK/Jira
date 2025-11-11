@@ -38,13 +38,23 @@
 
 
 ## Permissions:
-- Permissions at different levels:
-    - Global-level permissions
-        - Confluence admins control this. At the global level, admins can control global permissions, such as who can create spaces in Confluence, and default space permissions, where admins can configure the default permissions settings for new spaces created.
-    - Space-level permissions
-        - Space admins control this. At the space level, admins decide what each user or group can do in that space.
-    - Content/Page -level permissions
-        - Anyone who has permission to edit the content and to overall edit content in the space can change access to content items.
+### Global-level permissions
+- Global permissions control what groups of users can do in Confluence
+- Org admins give licensed users access to the Confluence site as members of user groups. ***Users can’t be added individually.***
+    - Create **spaces or personal space** in Confluence 
+    - **Public links**, you can let your Confluence users share content with anyone on the internet. 
+    - Give access to Guests (access to one space only)
+    -  Control anonymous access on this site
+
+### Space-level permissions
+- Space permission is given to users/groups, by check/uncheck a checkbox under the permission
+- Space admins control this. At the space level, admins decide what each user or group can do in that space.
+    - control default space permissions 
+    - control spaces permissions 
+    - can give users permissions to all spacess 
+
+### Content/Page -level permissions
+- Anyone who has permission to edit the content and to overall edit content in the space can change access to content items.
 
 ## Space
 - A `Space` is a collection of related content. 
