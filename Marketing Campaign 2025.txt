@@ -1,0 +1,24 @@
+1. Create a Company Managed Agile Kanban project.
+
+2. Create the missing Work Types (Campaign) 
+3. Create Work Type Scheme for this project contain Work Types (Campaign, Task, Sub-task).
+4. Associate this scheme with this project
+
+5. Create Custom Fields [Campaign Budget (Number field), Launch Date (Date picker)]
+6. Create Field configuration to make the [Campaign Budget] required
+7. Create Field configuration Scheme to associate the Field configuration with Worktype Campaign
+
+8. Create a Screen that has Campaign Budget, Launch Date fields
+9. Create a Screen scheme to associate the screen to all operations
+10. Create a worktype screen scheme to associate the scheme with worktypes Campaign
+
+11. Create a custom workflow contain status [To Do → In Progress → Review → Done].
+12. Add a transition screen & Validate field when moving to “Review” to capture a “Reviewer Comment” field & make sure its populated
+13. add properties to the status Done to make it not Editable
+14. Create a workflow scheme to associate worktypes to workflow
+
+15. Create a space role Admin & Employees, Viewer
+16. Create a permission scheme for most of the projects [Only Employees can create/edit] other Employees can only view
+17. Create A Marketing Admin/Employee/Viewers groups and add people to appropriate group
+18. add people to project by associating project role to Groups 
+
